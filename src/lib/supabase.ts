@@ -1,88 +1,23 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://demo.supabase.co'
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'demo-key'
+// Initialize Supabase client
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://example.supabase.co';
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'demo-key';
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+export const supabase = createClient(supabaseUrl, supabaseKey);
 
-export type Database = {
-  public: {
-    Tables: {
-      users: {
-        Row: {
-          id: string
-          email: string
-          subscription_tier: 'free' | 'pro' | 'premium'
-          created_at: string
-        }
-        Insert: {
-          id?: string
-          email: string
-          subscription_tier?: 'free' | 'pro' | 'premium'
-          created_at?: string
-        }
-        Update: {
-          id?: string
-          email?: string
-          subscription_tier?: 'free' | 'pro' | 'premium'
-          created_at?: string
-        }
-      }
-      projects: {
-        Row: {
-          id: string
-          user_id: string
-          name: string
-          template_id: string
-          design_data: any
-          created_at: string
-          updated_at: string
-        }
-        Insert: {
-          id?: string
-          user_id: string
-          name: string
-          template_id: string
-          design_data?: any
-          created_at?: string
-          updated_at?: string
-        }
-        Update: {
-          id?: string
-          user_id?: string
-          name?: string
-          template_id?: string
-          design_data?: any
-          created_at?: string
-          updated_at?: string
-        }
-      }
-      templates: {
-        Row: {
-          id: string
-          name: string
-          category: string
-          preview_url: string
-          elements: any
-          is_premium: boolean
-        }
-        Insert: {
-          id?: string
-          name: string
-          category: string
-          preview_url: string
-          elements?: any
-          is_premium?: boolean
-        }
-        Update: {
-          id?: string
-          name?: string
-          category?: string
-          preview_url?: string
-          elements?: any
-          is_premium?: boolean
-        }
-      }
-    }
+// Helper function to handle Supabase errors
+export function handleSupabaseError(error: any): string {
+  console.error('Supabase error:', error);
+  
+  if (error.message) {
+    return error.message;
   }
+  
+  if (error.error_description) {
+    return error.error_description;
+  }
+  
+  return 'An unexpected error occurred';
 }
+
