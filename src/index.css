@@ -2,46 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 230 15% 98%;
-    --foreground: 230 15% 25%;
-    --card: 0 0% 100%;
-    --card-foreground: 230 15% 25%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 230 15% 25%;
-    --primary: 240 90% 50%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 230 15% 95%;
-    --secondary-foreground: 230 15% 25%;
-    --muted: 230 15% 95%;
-    --muted-foreground: 230 15% 45%;
-    --accent: 30 95% 55%;
-    --accent-foreground: 230 15% 25%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 230 15% 90%;
-    --input: 230 15% 90%;
-    --ring: 240 90% 50%;
-    --radius: 0.5rem;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary: hsl(240 90% 50%);
+  --accent: hsl(30 95% 55%);
+  --bg: hsl(230 15% 98%);
+  --surface: hsl(0 0% 100%);
+  --text-primary: hsl(230 15% 25%);
+  --text-secondary: hsl(230 15% 45%);
 }
 
-@layer base {
-  * {
-    border-color: hsl(var(--border));
-  }
-  body {
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
 }
 
 .gradient-bg {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-.gradient-purple {
-  background: linear-gradient(135deg, #8B5CF6 0%, #3B82F6 100%);
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
